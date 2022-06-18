@@ -3,8 +3,6 @@
 #include <iostream>
 #include <string>
 #include <cstring>
-#include <thread>
-#include <atomic>
 
 bool walk(const std::string &name, std::string &path, DIR *walker)
 {
@@ -48,11 +46,4 @@ void find_path(const std::string &name)
     std::string path = "/";
     DIR *walker = opendir(path.c_str());
     walk(name, path, walker);
-}
-
-int main(int argc, char *argv[])
-{
-    const std::string name = argv[1];
-    find_path(name);
-    return 0;
 }
