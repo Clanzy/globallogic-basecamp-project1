@@ -67,6 +67,7 @@ void main_thread(std::vector<std::pair<DIR *, std::string>> &root_directories, c
         std::string local_string = root_directories.back().second;
         root_directories.pop_back();
         walk(name, std::ref(local_string), dir);
+        closedir(dir);
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
 }
@@ -105,6 +106,7 @@ void find_path(const std::string &name)
             path.resize(path.size() - strlen(dir->d_name) - 1);
         }
     }
+    closedir(walker);
     std::array<std::thread, NUMBER_OF_THREADS> threads;
     for (auto &i : threads)
     {
