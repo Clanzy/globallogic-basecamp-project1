@@ -11,4 +11,4 @@ lib/libfilesearch.a: dist/lib.o
 	ar rcs lib/libfilesearch.a dist/lib.o
 
 dist/main.bin: src/main.cpp src/lib.hpp lib/libfilesearch.a
-	g++ src/main.cpp -L./lib -lfilesearch -o dist/main.bin
+	g++ src/main.cpp -L./lib -lfilesearch -o dist/main.bin -pthread
